@@ -1,0 +1,17 @@
+<h1>People Route</h1>
+<form (submit)="addPerson({name: name, phoneNumber: phoneNumber})">
+  <input name="name" [(ngModel)]="name" placeholder="name">
+  <input name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="phone number">
+  <input type="submit">
+</form>
+<ul>
+  <li *ngFor="let p of people; index as i">
+    <a (click)="removePerson(i)">{{p.name}}</a> -
+    <a (click)="editPerson(i)">Edit</a>
+  </li>
+</ul>
+<form *ngIf="current" (submit)="editPerson(currentIndex,  current)">
+  <input name="name" [(ngModel)]="current.name" placeholder="name">
+  <input name="phoneNumber" [(ngModel)]="current.phoneNumber" placeholder="phone number">
+  <input type="submit">
+</form>
